@@ -4,33 +4,61 @@ body { margin: 0; background: #f7f7f5; color: #171717; font-family: Arial, Helve
 a { color: inherit; text-decoration: none; }
 .nav { width: min(1000px, calc(100% - 40px)); margin: auto; padding: 24px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
 .brand { font-size: 20px; font-weight: 700; letter-spacing: -.04em; }
-nav { display: flex; gap: 24px; font-size: 14px; color: #666; }
-nav a:hover, .text-link:hover, footer a:hover { color: #111; }
-.hero, .section, .about, footer { width: min(1000px, calc(100% - 40px)); margin: auto; }
-.hero { min-height: 72vh; padding: 110px 0 90px; display: flex; flex-direction: column; justify-content: center; }
-.eyebrow { margin: 0 0 22px; color: #777; font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
-h1 { max-width: 760px; margin: 0; font-size: clamp(52px, 8vw, 92px); line-height: .98; letter-spacing: -.07em; font-weight: 700; }
-.intro { max-width: 520px; margin: 28px 0; color: #666; font-size: 18px; }
+nav { display: flex; gap: 22px; font-size: 14px; color: #666; }
+nav a:hover, .text-link:hover, footer a:hover, .home-note a:hover { color: #111; }
+.hero, .section, .page, .doc, .legal, .home-note, footer { width: min(1000px, calc(100% - 40px)); margin: auto; }
+.hero { min-height: 68vh; padding: 100px 0 80px; display: flex; flex-direction: column; justify-content: center; }
+.eyebrow { margin: 0 0 20px; color: #777; font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
+h1 { max-width: 760px; margin: 0; font-size: clamp(50px, 8vw, 88px); line-height: .98; letter-spacing: -.07em; font-weight: 700; }
+.intro, .doc-intro { max-width: 560px; margin: 26px 0; color: #666; font-size: 18px; }
 .actions { display: flex; align-items: center; gap: 22px; margin-top: 8px; }
 .button { display: inline-block; padding: 12px 17px; background: #171717; color: #fff; border-radius: 5px; font-size: 14px; font-weight: 600; }
 .button:hover { background: #333; }
 .text-link { font-size: 14px; color: #555; }
-.section { padding: 100px 0; border-top: 1px solid #ddd; }
+.home-note { padding: 55px 0 95px; border-top: 1px solid #ddd; }
+.home-note > div { border-top: 1px solid #ddd; }
+.home-note a { display: flex; justify-content: space-between; gap: 20px; padding: 18px 0; border-bottom: 1px solid #ddd; }
+.home-note span { color: #777; font-size: 14px; }
+.page { padding: 90px 0 120px; }
+.page > h1, .doc h1, .legal h1 { margin-bottom: 50px; }
 .feature-list { border-top: 1px solid #ddd; }
 .feature-list article { display: grid; grid-template-columns: 80px 1fr; gap: 30px; padding: 30px 0; border-bottom: 1px solid #ddd; }
 .feature-list span { color: #999; font-size: 13px; }
 .feature-list h2 { margin: 0 0 7px; font-size: 25px; letter-spacing: -.04em; }
-.feature-list p { max-width: 520px; margin: 0; color: #666; }
-.about { padding: 100px 0 120px; }
-.about h2 { margin: 0 0 24px; font-size: clamp(42px, 6vw, 70px); line-height: 1; letter-spacing: -.06em; }
-.about > p:last-child { max-width: 500px; color: #666; }
+.feature-list p { max-width: 560px; margin: 0; color: #666; }
+.doc { padding: 75px 0 110px; display: grid; grid-template-columns: 180px 1fr; gap: 55px; }
+.doc aside { display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: #777; position: sticky; top: 25px; height: max-content; }
+.doc aside .active { color: #111; font-weight: 700; }
+.doc section h1 { font-size: clamp(44px, 6vw, 70px); }
+.command-group { margin-top: 55px; }
+.command-group > h2 { font-size: 18px; margin: 0 0 15px; }
+.command { display: grid; grid-template-columns: 190px 1fr; gap: 25px; padding: 20px 0; border-top: 1px solid #ddd; }
+.command code, .steps code { font-family: monospace; font-size: 13px; color: #444; }
+.command h3 { margin: 0 0 4px; font-size: 15px; }
+.command p, .empty { margin: 0; color: #777; font-size: 14px; }
+.empty { padding: 18px 0; border-top: 1px solid #ddd; }
+.steps { max-width: 650px; margin: 0 0 40px; padding: 0; list-style: none; counter-reset: steps; }
+.steps li { counter-increment: steps; padding: 25px 0 25px 55px; border-top: 1px solid #ddd; position: relative; }
+.steps li::before { content: counter(steps, decimal-leading-zero); position: absolute; left: 0; color: #999; font-size: 12px; }
+.steps b { font-size: 18px; }
+.steps p { margin: 6px 0 0; color: #666; }
+.support-links { max-width: 650px; border-top: 1px solid #ddd; }
+.support-links a { display: flex; justify-content: space-between; padding: 19px 0; border-bottom: 1px solid #ddd; }
+.legal { max-width: 760px; padding: 75px 0 110px; }
+.legal h1 { font-size: clamp(46px, 7vw, 76px); }
+.legal h2 { margin-top: 45px; font-size: 20px; }
+.legal p { color: #666; max-width: 680px; }
 footer { padding: 24px 0 35px; border-top: 1px solid #ddd; display: flex; justify-content: space-between; color: #777; font-size: 13px; }
-@media (max-width: 600px) {
-  .nav { width: calc(100% - 28px); }
-  .hero, .section, .about, footer { width: calc(100% - 28px); }
-  .hero { min-height: 65vh; padding: 80px 0 70px; }
+@media (max-width: 700px) {
+  .nav, .hero, .page, .doc, .legal, .home-note, footer { width: calc(100% - 28px); }
+  nav { gap: 12px; font-size: 12px; }
+  nav a:nth-child(3), nav a:nth-child(4) { display: none; }
+  .hero { min-height: 65vh; padding: 75px 0 60px; }
   h1 { font-size: 15vw; }
-  .intro { font-size: 16px; }
+  .doc { display: block; padding-top: 55px; }
+  .doc aside { position: static; flex-direction: row; overflow-x: auto; padding-bottom: 35px; }
+  .command { grid-template-columns: 1fr; gap: 8px; }
   .feature-list article { grid-template-columns: 45px 1fr; gap: 12px; }
-  .section, .about { padding: 75px 0; }
+  .page, .legal { padding: 65px 0 80px; }
+  footer { flex-wrap: wrap; gap: 10px; }
 }
