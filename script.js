@@ -1,15 +1,28 @@
-document.getElementById('year').textContent = new Date().getFullYear();
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
 
-const reveal = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.animate(
-        [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'translateY(0)' }],
-        { duration: 650, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }
-      );
-      reveal.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
+const search = document.getElementById('command-search');
+if (search) {
+  const commands = [...document.querySelectorAll('.command')];
+  const groups = [...document.querySelectorAll('.command-group')];
+  const count = document.getElementById('command-count');
+  const noResults = document.getElementById('no-results');
 
-document.querySelectorAll('.card, .statement, .cta-box').forEach((el) => reveal.observe(el));
+  const filter = () => {
+    const query = search.value.trim().toLowerCase();
+    let visible = 0;
+    commands.forEach((command) => {
+      const match = command.textContent.toLowerCase().includes(query);
+      command.style.display = match ? '' : 'none';
+      if (match) visible += 1;
+    });
+    groups.forEach((group) => {
+      const hasVisible = group.querySelector('.command:not([style*="display: none"])');
+      group.style.display = hasVisible ? '' : 'none';
+    });
+    if (count) count.textContent = `${visible} command${visible === 1 ? '' : 's'}`;
+    if (noResults) noResults.classList.toggle('hidden', visible !== 0);
+  };
+
+  search.addEventListener('input', filter);
+}
